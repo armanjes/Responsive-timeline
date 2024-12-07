@@ -1,0 +1,163 @@
+:root {
+  --bg-orange: #fdf7f4;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: var(--bg-orange);
+}
+
+.timeline {
+  position: relative;
+  margin: 100px auto;
+  max-width: 1200px;
+}
+
+.timeline-container {
+  padding: 10px 50px;
+  position: relative;
+  width: 50%;
+  animation: movedown 1s linear forwards;
+  opacity: 0;
+}
+
+@keyframes movedown {
+  0% {
+    opacity: 1;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.timeline-container:nth-child(1) {
+  animation-delay: 0s;
+}
+.timeline-container:nth-child(2) {
+  animation-delay: 1s;
+}
+.timeline-container:nth-child(3) {
+  animation-delay: 2s;
+}
+.timeline-container:nth-child(4) {
+  animation-delay: 3s;
+}
+
+.text-box {
+  padding: 20px 30px;
+  position: relative;
+  border-radius: 6px;
+  font-size: 15px;
+  background-color: #fefffe;
+}
+
+.timeline-container:nth-child(even) {
+  left: 0;
+}
+
+.timeline-container:nth-child(odd) {
+  left: 50%;
+}
+
+.timeline-container img {
+  position: absolute;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  right: -20px;
+  top: 32px;
+  z-index: 10;
+}
+
+.timeline-container:nth-child(odd) img {
+  left: -20px;
+}
+
+.timeline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 6px;
+  height: 100%;
+  background-color: #f2eff2;
+  margin-left: -3px;
+  z-index: -1;
+  animation: moveline 4s linear forwards;
+}
+
+@keyframes moveline {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+.text-box .left-arrow {
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: 28px;
+  z-index: 1;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 15px solid #fefffe;
+  right: -15px;
+}
+
+.text-box .right-arrow {
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: 28px;
+  z-index: 1;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right: 15px solid #fefffe;
+  left: -15px;
+}
+
+/* responsive */
+
+@media screen and (max-width: 600px) {
+  .timeline {
+    margin: 50px auto;
+  }
+
+  .timeline::after {
+    left: 31px;
+  }
+
+  .timeline-container {
+    width: 100%;
+    padding-left: 80px;
+    padding-right: 25px;
+  }
+
+  .timeline-container:nth-child(odd) {
+    left: 0%;
+  }
+
+  .timeline-container img {
+    left: 10px;
+  }
+
+  .timeline-container:nth-child(odd) img{
+    left: 10px;
+  }
+
+  .left-arrow {
+    transform: rotate(180deg);
+    left: -15px;
+  }
+}
